@@ -1,22 +1,11 @@
-import { ActionReducer, Action } from "@ngrx/store";
-import { State, intitialState } from "../state/state";
-import { INCREMENT,DECREMENT } from "../actions/actions";
-export const mainStoreReducer: ActionReducer<State> =
-    (state = intitialState, action: Action) => {
-    console.log('Action came in ' + action.type);
-   switch(action.type) {
-      case INCREMENT: {
-        return {
-          counter: state.counter + 1
-        }
-      }
-     case DECREMENT: {
-        return {
-          counter: state.counter - 1
-        }
-      }
-      default: {
-        return state;
-      }
-    }
-};
+import { createReducer, on } from '@ngrx/store';
+import { increment,decrement,reset } from '../actions/actions';
+
+export const initialState = 0;
+
+export const counterReducer = createReducer(
+  initialState,
+  on(increment, (state) => state + 1),
+  on(decrement, (state) => state - 1),
+  on(reset, (state) => 0)
+);
