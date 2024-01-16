@@ -4,13 +4,14 @@ import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './state/reducers/reducer';
 import { AppComponent } from './app.component';
 import { DemoCounterComponent } from 'src/demoCounter/demoCounter.component';
+import { TodoComponenet } from './todo/todo.component';
 
 @NgModule({
   imports: [
      BrowserModule, 
      StoreModule.forRoot({count:counterReducer}),
     ],
-  declarations: [AppComponent,DemoCounterComponent],
+  declarations: [AppComponent,DemoCounterComponent,TodoComponenet],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
